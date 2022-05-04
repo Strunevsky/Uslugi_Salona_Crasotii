@@ -1,0 +1,90 @@
+﻿<Window Loaded="Window_Loaded" x:Class="Uslugi_Salona_Crasoti.ZapisNaUslugu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Uslugi_Salona_Crasoti"
+        mc:Ignorable="d"
+        Title="Бархатные бровки" Height="450" Width="800">
+    <Window.Resources>
+        <Style TargetType="{x:Type Button}" x:Key="Button">
+            <Setter Property="Background" Value="#ff4a6d"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Margin" Value="20 8 20 8" />
+            <Setter Property="FontFamily" Value="Tahoma"/>
+        </Style>
+
+        <Style TargetType="{x:Type Label}" x:Key="Label">
+            <Setter Property="FontFamily" Value="Tahoma"/>
+        </Style>
+
+        <Style TargetType="{x:Type TextBox}" x:Key="TextBox">
+            <Setter Property="FontFamily" Value="Tahoma"/>
+        </Style>
+    </Window.Resources>
+    <Grid Background="#e1e4ff" Margin="0,0,0,-6">
+        
+        <ListBox Margin="156,94,25,94" x:Name="ClientService1">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Margin="5">
+                        <!--<TextBlock FontSize="16" Text="{Binding Path=ID}" />-->
+                        <TextBlock FontSize="16" Text="{Binding Path=ClientID}"/>
+                        <TextBlock FontSize="16" Text="{Binding Path=ServisID}"/>
+                        <TextBlock FontSize="16" Text="{Binding Path=StartTime}" x:Name="Red"/>
+                        <TextBlock FontSize="16" Text="{Binding Path=Comment}"/>
+                        <Button Content="Удаление" Style="{StaticResource ResourceKey=Button}"/>
+                        <Button Content="Редактирование" Style="{StaticResource ResourceKey=Button}"/>
+                        <Image Width="100" Height="75" Source="{Binding Path=MainImagePath}" />
+                        <!--StringFormat={}{C}  StringFormat={}{P}} StringFormat={}{s}-->
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Label Style="{StaticResource ResourceKey=Label}" Background="#ff4a6d" Foreground="White"  Content="Запись клиента на услугу и Ближайшие записи" FontSize="20" Margin="156,10,156,373"/>
+        <Label  Content="Поиск:" HorizontalAlignment="Left" Margin="156,375,0,0" VerticalAlignment="Top" Width="58"/>
+        <TextBox HorizontalAlignment="Left" Margin="219,375,0,0" TextWrapping="Wrap" Text=" " VerticalAlignment="Top" Width="133" Height="26"/>
+        
+        <Button Style="{StaticResource ResourceKey=Button}" Content="Записаться на услугу" HorizontalAlignment="Left" Margin="10,241,0,0" VerticalAlignment="Top" Click="Zapis" Height="24"/>
+        <Button Style="{StaticResource ResourceKey=Button}" Content="Назад" HorizontalAlignment="Left" Margin="10,283,0,0" VerticalAlignment="Top" Width="120" Click="Nazad" Height="24"/>
+        <Button Style="{StaticResource ResourceKey=Button}" Content="Выход" HorizontalAlignment="Left"  Margin="10,325,0,0" VerticalAlignment="Top" Width="120" Click="Vihod" Height="21" />
+        <Button Style="{StaticResource ResourceKey=Button}" Content="Искать по Названию" HorizontalAlignment="Left" Margin="382,375,0,0" VerticalAlignment="Top" Width="166" Click="Naiti" Height="26" />
+        <Button Style="{StaticResource ResourceKey=Button}" Content="Обновить" HorizontalAlignment="Left" Margin="10,203,0,0" VerticalAlignment="Top" Click="Obnavlenie" Height="24" Width="120"/>
+     </Grid>
+</Window>
+
+
+
+
+<!-- <ListBox Margin="10,46,585,286" >
+             <Grid Height="197" Width="744">
+                <TextBox Style="{StaticResource ResourceKey=TextBox}" TextWrapping="Wrap" FontSize="20"  Text="" Margin="178,32,10,42" />
+                <TextBox Style="{StaticResource ResourceKey=TextBox}" TextWrapping="Wrap" Text=" Классический Маникюр" FontSize="20" Margin="178,-1,138,170" />
+                <Image HorizontalAlignment="Left" Height="148" VerticalAlignment="Top" Width="176" Source="/Классический маникюр.png" />
+            </Grid>
+            <Grid Height="196" Width="744">
+
+                <TextBox Style="{StaticResource ResourceKey=TextBox}" TextWrapping="Wrap" FontSize="20" Text=""/>
+                <TextBox Style="{StaticResource ResourceKey=TextBox}" TextWrapping="Wrap" Text="Европейский Маникюр" FontSize="20" Margin="184,0,132,169"/>
+                <Image HorizontalAlignment="Left" Height="148" VerticalAlignment="Top" Width="176" Source="/Европейский маникюр.jpg"/>
+
+            </Grid>
+            <Grid Height="203" Width="744">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="355*"/>
+                    <ColumnDefinition Width="13*"/>
+                    <ColumnDefinition Width="376*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBox Style="{StaticResource ResourceKey=TextBox}" TextWrapping="Wrap" FontSize="20" Text="Описание:Стандартная лодка с вёслами. Материал: дерево,пластик" Margin="184,37,132,37" Grid.ColumnSpan="3"/>
+                <TextBox Style="{StaticResource ResourceKey=TextBox}" TextWrapping="Wrap" Text="Наращивание ресниц" FontSize="20" Margin="184,0,132,169" Grid.ColumnSpan="3"/>
+                <Image HorizontalAlignment="Left" Height="148" VerticalAlignment="Top" Width="176" Source="/Декорирование нарощенных ресниц стразами.jpg" />
+            </Grid>
+
+            <Grid Height="203" Width="744">
+
+                <TextBox Style="{StaticResource ResourceKey=TextBox}" TextWrapping="Wrap"  FontSize="20" Text="Описание:Стандартная лодка с вёслами. Материал: дерево,пластик" Margin="184,28,132,46"/>
+                <TextBox Style="{StaticResource ResourceKey=TextBox}" TextWrapping="Wrap" Text="Солярий" FontSize="20" Margin="184,-6,132,175"/>
+                <Image HorizontalAlignment="Left" Height="148" VerticalAlignment="Top" Width="176" Source="/soliarij.jpg" />
+            </Grid>
+        </ListBox> -->

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6c8837e06020408b88332b3cb6d88e6e" Name="Diagram1">
+        <EntityTypeShape EntityType="Uslugi_Salona_CrasotiModel.Client" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Uslugi_Salona_CrasotiModel.ClientService" Width="1.5" PointX="3" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Uslugi_Salona_CrasotiModel.DocumentByService" Width="1.5" PointX="5.375" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Uslugi_Salona_CrasotiModel.Gender" Width="1.5" PointX="5.375" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="Uslugi_Salona_CrasotiModel.Manufacturer" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="Uslugi_Salona_CrasotiModel.Product" Width="1.5" PointX="3" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Uslugi_Salona_CrasotiModel.ProductPhoto" Width="1.5" PointX="5.25" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="Uslugi_Salona_CrasotiModel.ProductSale" Width="1.5" PointX="7.125" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Uslugi_Salona_CrasotiModel.Service" Width="1.5" PointX="2.625" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Uslugi_Salona_CrasotiModel.ServicePhoto" Width="1.5" PointX="5.375" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Uslugi_Salona_CrasotiModel.Tag" Width="1.5" PointX="0.625" PointY="10.5" IsExpanded="true" />
+        <AssociationConnector Association="Uslugi_Salona_CrasotiModel.FK_Client_Gender" ManuallyRouted="false" />
+        <AssociationConnector Association="Uslugi_Salona_CrasotiModel.FK_ClientService_Client" ManuallyRouted="false" />
+        <AssociationConnector Association="Uslugi_Salona_CrasotiModel.FK_ClientService_Service" ManuallyRouted="false" />
+        <AssociationConnector Association="Uslugi_Salona_CrasotiModel.FK_DocumentByService_ClientService" ManuallyRouted="false" />
+        <AssociationConnector Association="Uslugi_Salona_CrasotiModel.FK_ProductSale_ClientService" ManuallyRouted="false" />
+        <AssociationConnector Association="Uslugi_Salona_CrasotiModel.FK_Product_Manufacturer" ManuallyRouted="false" />
+        <AssociationConnector Association="Uslugi_Salona_CrasotiModel.FK_ProductPhoto_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="Uslugi_Salona_CrasotiModel.FK_ProductSale_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="Uslugi_Salona_CrasotiModel.FK_ServicePhoto_Service" ManuallyRouted="false" />
+        <AssociationConnector Association="Uslugi_Salona_CrasotiModel.AttachedProduct" ManuallyRouted="false" />
+        <AssociationConnector Association="Uslugi_Salona_CrasotiModel.TagOfClient" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

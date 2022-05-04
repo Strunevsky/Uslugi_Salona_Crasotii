@@ -1,0 +1,116 @@
+﻿<Window Loaded="Window_Load" x:Class="Uslugi_Salona_Crasoti.PanelAdmin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Uslugi_Salona_Crasoti"
+        mc:Ignorable="d"
+        Title="Бархатные бровки" Height="456" Width="858" Icon="/beauty_logo.png" IsVisibleChanged="Grid_IsVisibleChanged">
+    <Window.Resources>
+        <Style TargetType="{x:Type Button}" x:Key="Button">
+            <Setter Property="Background" Value="#ff4a6d"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Margin" Value="20 8 20 8" />
+            <Setter Property="FontFamily" Value="Tahoma"/>
+            <Setter Property="Width" Value="166"/>
+        </Style>
+        <Style TargetType="{x:Type Label}" x:Key="Label">
+            <Setter Property="FontFamily" Value="Tahoma"/>
+        </Style>
+        <Style TargetType="{x:Type TextBlock}" x:Key="TextBlock">
+            <Setter Property="FontFamily" Value="Tahoma"/>
+        </Style>
+    </Window.Resources>
+    <Grid Background="#e1e4ff" Height="436" VerticalAlignment="Top">
+        <ComboBox HorizontalAlignment="Left" Margin="28,73,0,0" VerticalAlignment="Top" Width="166" >
+            <TextBox x:Name="Message" Text="{Binding Value, ElementName=slider1}" />
+            <TextBox Text="%"/>
+            <Slider x:Name="slider1" Value="{Binding Text, ElementName=Message}" Minimum="0" Maximum="5" Width="180" />
+            <Slider x:Name="slider2" Value="{Binding Text, ElementName=Message}" Minimum="5" Maximum="30" Width="180" />
+            <Slider x:Name="slider3" Value="{Binding Text, ElementName=Message}" Minimum="15" Maximum="30" Width="180" />
+            <Slider x:Name="slider4" Value="{Binding Text, ElementName=Message}" Minimum="30" Maximum="70" Width="180" />
+            <Slider x:Name="slider5" Value="{Binding Text, ElementName=Message}" Minimum="70" Maximum="100" Width="180" />
+        </ComboBox>
+        <Label Style="{StaticResource ResourceKey=Label}"  Foreground="Black"  Content="Панель администратора" FontSize="20" HorizontalAlignment="Left" Margin="0,3,0,0" VerticalAlignment="Top" Width="242" />
+
+        <Label  Content="Поиск:" HorizontalAlignment="Left" Margin="233,381,0,0" VerticalAlignment="Top" Width="58"/>
+        <TextBox HorizontalAlignment="Left" Margin="291,385,0,0" TextWrapping="Wrap" Text=" " VerticalAlignment="Top" Width="166" Name="Poisk" TextChanged="Poisk_TextChanged" />
+        <Label Style="{StaticResource ResourceKey=Label}" Background="#ff4a6d" Foreground="White"  Content="Услуги" FontSize="15" Margin="373,40,402,352" RenderTransformOrigin="0.5,0.5">
+        </Label>
+
+        <ListBox Margin="232,98,10,106" x:Name="Service" DataContext="{Binding Path=Title}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Margin="5">
+                        <!--<TextBlock FontSize="16" Text="{Binding Path=ID}"  HorizontalAlignment="Center"/>-->
+                        <TextBlock FontSize="16" Text="{Binding Path=Title}" HorizontalAlignment="Center"/>
+                        <TextBlock FontSize="16" Text="{Binding Path=Cost,ValidatesOnExceptions=True, StringFormat={}{0} рублей }" HorizontalAlignment="Center"/>
+                        <TextBlock FontSize="16" Text="{Binding Path=DuractionlnSeconds, ValidatesOnExceptions=True,StringFormat={}{0:00}Минут}" HorizontalAlignment="Center"/>
+                        <TextBlock FontSize="16" Text="{Binding Path=Discount, ValidatesOnExceptions=True,StringFormat={}{0:P} Скидка0}" HorizontalAlignment="Center"/>
+                        <TextBlock FontSize="16" Text="{Binding Path=Description}" HorizontalAlignment="Center"/>
+                        <Button Content="Удаление" Style="{StaticResource ResourceKey=Button}" Grid.Row="2" Grid.Column="1" Click="Udalenie"/>
+                        <Button Content="Редактирование" Style="{StaticResource ResourceKey=Button }" Grid.Row="1" Grid.Column="2" Click="Upravlenie_Uslug"/>
+                        <Image Width="100" Height="75" Source="{Binding Path=MainImagePath}" HorizontalAlignment="Center"/>
+
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Button Style="{StaticResource ResourceKey=Button}" Content="Сохранить изменения" HorizontalAlignment="Left" Margin="28,304,0,0" VerticalAlignment="Top" Click="Sohranit" />
+        <Button Style="{StaticResource ResourceKey=Button}" Content="Искать по Названию" HorizontalAlignment="Left" Margin="464,385,0,0" VerticalAlignment="Top" Click="Naiti" Width="192"  />
+        <Button Style="{StaticResource ResourceKey=Button}" Content="Редактирование клиента" HorizontalAlignment="Left" Margin="28,132,0,0" VerticalAlignment="Top" Click="Upravlenie_Client" />
+        <Button Style="{StaticResource ResourceKey=Button}" Content="Добавление новой услуги" HorizontalAlignment="Left" Margin="28,199,0,0" VerticalAlignment="Top" Click="Dobavlenie" />
+        <Button Style="{StaticResource ResourceKey=Button}" Content="Редактирование услуги" HorizontalAlignment="Left" Margin="28,165,0,0" VerticalAlignment="Top" Click="Upravlenie_Uslug" />
+        <Button Style="{StaticResource ResourceKey=Button}" Content="Назад" HorizontalAlignment="Left" Margin="28,338,0,0" VerticalAlignment="Top" Click="Nazad"/>
+        <Button Style="{StaticResource ResourceKey=Button}" Content="Выход" HorizontalAlignment="Left"  Margin="28,371,0,0" VerticalAlignment="Top" Click="Vihod" />
+        <Button Style="{StaticResource ResourceKey=Button}" Content="Искать по скидке" HorizontalAlignment="Left" Margin="28,100,0,0" VerticalAlignment="Top" Click="Poisk_Skidki"/>
+        <Button Style="{StaticResource ResourceKey=Button}" Content="Удаление услуги" HorizontalAlignment="Left" Margin="28,239,0,0" VerticalAlignment="Top" Click="Udalenie"/>
+        <Button Style="{StaticResource ResourceKey=Button}" Content="Отменить изменения" HorizontalAlignment="Left" Margin="28,269,0,0" VerticalAlignment="Top" Click="Undo"/>
+        <Label  Content="Записей в базе:" HorizontalAlignment="Left" Margin="236,337,0,0" VerticalAlignment="Top" Width="100"/>
+        <Button Style="{StaticResource ResourceKey=Button}" Content="Обновить количество записей" HorizontalAlignment="Left" Margin="464,346,0,0" VerticalAlignment="Top" Click="Obnovlenie1" Width="192"/>
+        <Label  Content=" " HorizontalAlignment="Left" Margin="345,339,0,0" VerticalAlignment="Top" Width="58" x:Name="Kolvo"/>
+        <Button Style="{StaticResource ResourceKey=Button}" Content="Обновить страницу в ручную" HorizontalAlignment="Left" Margin="674,346,0,0" VerticalAlignment="Top" Click="Updating" Height="19" Width="174"/>
+
+    </Grid>
+</Window>
+
+
+<!--<DataGrid ItemsSource="{Binding}" RowBackground="#ff4a6d" AlternatingRowBackground="#e1e4ff" 
+            x:Name="Uslugi"  CanUserAddRows="True"  Margin="229,73,192,64">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" 
+	                Binding="{Binding Id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <DataGridTextColumn Header="Название" 
+	                Binding="{Binding Title, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <DataGridTextColumn Header="Цена" 
+	                Binding="{Binding Cost, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <DataGridTextColumn Header="Время в секундах" 
+	                Binding="{Binding DurationSecond, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <DataGridTextColumn Header="Коментарий" 
+	                Binding="{Binding Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <DataGridTextColumn Header="Скидка" 
+	                Binding="{Binding Discount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <DataGridTextColumn Header="Картинка" 
+	                Binding="{Binding MainImagePath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            </DataGrid.Columns>
+        </DataGrid>-->
+
+<!--<Window.CommandBinding>
+            <CommandBinding Command="Undo" Executed="UndoCommandBinding_Executed" CanExecute="SaveCommandBinding_CanExecute"/>
+            <CommandBinding Command="Save" Executed="SaveCommandBinding_Executed" CanExecute="SaveCommandBinding_CanExecute"/>
+            <CommandBinding Command="Find" Executed="FindComandBinding_Executed" CanExecute="EditCommandBinding_CanExecute"/>
+            <CommandBinding Command="New" Executed="AddCommandBinding_Executed" CanExecute="EditCommandBinding_CanExecute"/>
+
+            <CommandBinding Command="{x:Static command:DataCommands.Edit}" 
+                            Executed="EditComandBinding_Executed" CanExecute="EditCommandBinding_CanExecute"/>
+            <CommandBinding Command="{x:Static command:DataCommands.Delete}"
+                            Executed="DeleteCommandBinding_Executed" CanExecute="EditCommandBinding_CanExecuted"/>
+            <CommandBinding Command="Refresh" Executed="RefreshCommandBinding_Executed"/>
+            </Window.CommandBinding>-->
+    
